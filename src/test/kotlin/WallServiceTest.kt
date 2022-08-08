@@ -8,7 +8,7 @@ class WallServiceTest {
     @Test
     fun addFunction() {
         val post = Post(postId = 1)
-        val postIdExpected: Long = 3
+        val postIdExpected: Long = 1
         service.add(post)
         val result = service.add(post).postId
         assertEquals(postIdExpected, result)
