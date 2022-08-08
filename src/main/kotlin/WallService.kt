@@ -5,7 +5,7 @@ object WallService {
     fun add(post: Post): Post {
         posts += post
         post.copy(
-            postId = if (posts.isNotEmpty()) posts.last().postId++ else 0
+            postId = if (posts.isNotEmpty()) posts.last().postId+1 else 0
         )
         return posts.last()
     }

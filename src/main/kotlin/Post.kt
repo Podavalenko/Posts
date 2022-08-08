@@ -1,5 +1,5 @@
 data class Post (
-    var postId: Long,
+    val postId: Long,
     val ownerId: Long = 0,
     val date: Int = 0,
     val text: String = "",
