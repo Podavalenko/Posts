@@ -1,26 +1,25 @@
 object WallService {
 
-    private val posts: MutableList<Post> = mutableListOf()
 
-    fun add(post: Post): Post {
-        posts += post
-        post.copy(
-            postId = if (posts.isNotEmpty()) posts.last().postId+1 else 0
-        )
-        return posts.last()
-    }
+        private var posts = emptyArray<Post>()
+        private var id: Long = 1
 
-    fun print() {
-        println(posts.last().toString())
-    }
 
-    fun update(post: Post): Boolean {
-        for ((index, item) in posts.withIndex()) {
-            if (item.postId == post.postId) {
-                posts[index] = post.copy(postId = item.postId, date = item.date)
-                return true
-            }
+
+        fun add(post: Post): Post {
+            posts += post.copy(postId  = id)
+            id++
+            return posts.last()
+
         }
-        return false
+
+        fun update(post: Post): Boolean {
+            for ((index, item) in posts.withIndex()) {
+                if (item.postId == post.postId) {
+                    posts[index] = post.copy(postId = post.postId, date = post.date)
+                    return true
+                }
+            }
+            return false
+        }
     }
-}

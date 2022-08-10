@@ -1,12 +1,11 @@
-data class Post (
-    val postId: Long,
+data class Post(
+    val postId: Long = 1,
     val ownerId: Long = 0,
-    val fromId: Int,
-    val createdBy: Int,
+    val fromId: Int? = null,
     val date: Int = 0,
     val text: String = "any text",
-    val replyOwnerId: Int,
-    val replyPostId: Int,
+    val replyOwnerId: Int? = null,
+    val replyPostId: Int? = null,
     val friendsOnly: Boolean = false,
     val comments: Comments? = null,
     val copyright: Copyright? = null,
@@ -16,7 +15,7 @@ data class Post (
     val postType: String = "any type",
     val postSource: PostSource? = null,
     val geo: Geo? = null,
-    val signerId: Int,
+    val signerId: Int? = null,
     val canPin: Boolean = false,
     val canDelete: Boolean = false,
     val canEdit: Boolean = false,
@@ -24,10 +23,10 @@ data class Post (
     val markeAsAds: Boolean = false,
     val isFavorite: Boolean = false,
     val donut: Donut? = null,
-    val postponedId: Int,
-    val attachments: Array<Attachment> = emptyArray()
-)
+    val postponedId: Int? = null,
 
+)
+val attachments: Array<Attachment> = emptyArray()
 interface Attachment {
     val type: String
 }

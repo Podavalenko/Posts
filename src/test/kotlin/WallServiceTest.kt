@@ -5,123 +5,37 @@ import org.junit.Assert.*
 class WallServiceTest {
     private var service = WallService
 
+
+
     @Test
     fun addFunction() {
         val post = Post(postId = 1)
-        val postIdExpected: Long = 1
+        val postIdExpected: Long = 2
         service.add(post)
         val result = service.add(post).postId
         assertEquals(postIdExpected, result)
     }
 
     @Test
-    fun updateExisting_True() {
-        service.add(Post(
-            3,
-            3,
-            1,
-            "текст поста",
-            false,
-            "тип поста",
-            true,
-            false,
-            true,
-            true
-        ))
-        service.add(Post(
-            2,
-            5,
-            2,
-            "текст поста",
-            false,
-            "тип поста",
-            true,
-            false,
-            false,
-            true
-        ))
-        service.add(Post(
-            1,
-            3,
-            1,
-            "текст поста",
-            false,
-            "тип поста",
-            true,
-            false,
-            true,
-            true
-        ))
+    fun update_true() {
+        val post1 = Post(postId = 11)
+        val post2 = Post(postId = 1, text = "newText")
+        WallService.add(post1)
 
-        val update = Post(
-            3,
-            3,
-            1,
-            "текст поста",
-            false,
-            "тип поста",
-            true,
-            false,
-            true,
-            true
-        )
-        val result = service.update(update)
+        val result = WallService.update(post2)
 
         assertTrue(result)
     }
 
     @Test
-    fun updateExisting_False() {
-        service.add(Post( 1,
-            3,
-            1,
-            "текст поста",
-            false,
-            "тип поста",
-            true,
-            false,
-            true,
-            true
-        ))
-        service.add(Post( 2,
-            3,
-            1,
-            "текст поста",
-            false,
-            "тип поста",
-            true,
-            false,
-            true,
-            true,
-            ))
-        service.add(Post( 3,
-            3,
-            1,
-            "текст поста",
-            false,
-            "тип поста",
-            true,
-            false,
-            true,
-            true,
-            ))
+    fun update_false() {
+        val post1 = Post(postId = 11)
+        val post2 = Post(postId = 2, text = "newText")
+        WallService.add(post1)
 
-        val update = Post(45,
-            3,
-            1,
-            "текст поста",
-            false,
-            "тип поста",
-            true,
-            false,
-            true,
-            true
-        )
-
-        val result = service.update(update)
+        val result = WallService.update(post2)
 
         assertFalse(result)
     }
-
 
 }
