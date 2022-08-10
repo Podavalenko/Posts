@@ -10,7 +10,7 @@ fun main () {
     service.add(secondPost)
     service.add(thirdPost)
 
-    service.print()
+
 
     service.update(fourthPost)
 }
